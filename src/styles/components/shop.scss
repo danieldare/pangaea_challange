@@ -9,6 +9,10 @@
         padding: 4rem;
         height: 100%;
 
+        @media screen and (max-width: 968px) {
+            padding: 0rem;
+        }
+
         @media screen and (max-width: 768px) {
             grid-template-columns: repeat(2, 1fr);
             padding: 0;
@@ -82,13 +86,9 @@
                 margin-bottom: 20px;
 
                 .product-image {
-                    height: 150px;
+                    height: 120px;
                     max-width: 100%;
                     object-fit: contain;
-
-                    @media screen and (max-width: 468px) {
-                        height: 120px;
-                    }
                 }
             }
         }
