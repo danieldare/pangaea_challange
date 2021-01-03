@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useUpdateEffect } from 'react-use';
 import BackDrop from '../components/LandingPageContent/BackDrop';
 import MiniBanner from '../components/LandingPageContent/MiniBanner';
@@ -13,6 +13,7 @@ export default function LandingPage() {
     const [currenciesOptions, setCurrenciesOptions] = useState(['USD']);
     const [sideDrawerVisibility, setSideDrawerVisibility] = useState(false);
     const [cart, setCart] = useState([]);
+    // const [productsData, setProductsData] = useState([]);
 
     const { data: products, loading: loadingProducts, error, refetch } = useQuery(
         GET_PRODUCTS_QUERY,
@@ -62,23 +63,21 @@ export default function LandingPage() {
     }
 
     function removeCartItem(id) {
-        setCart([...cart.filter((item) => item.id !== id)]);
+        setCart(cart.filter((item) => item.id !== id));
     }
 
     function getTotalItemsInCart() {
         return cart.reduce((acc, element) => acc + element.quantity, 0);
     }
 
-    useUpdateEffect(() => {
+    useEffect(() => {
         setCart([...calculateCartItemPrice()]);
     }, [products]);
 
     function calculateCartItemPrice() {
         return cart.map((cartItem) => ({
             ...cartItem,
-            price:
-                products?.products?.find((product) => product.id === cartItem.id).price *
-                cartItem.quantity
+            price: products?.products?.find((product) => product.id === cartItem.id).price
         }));
     }
 
@@ -104,7 +103,7 @@ export default function LandingPage() {
             <MiniBanner />
             <Shop
                 activeCurrency={activeCurrency}
-                products={products}
+                products={products?.products}
                 handleAddToCart={addToCart}
                 loading={loadingProducts}
                 error={error}

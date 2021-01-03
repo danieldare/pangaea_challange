@@ -4,7 +4,7 @@ import ProductCard from '../ProductCard';
 import Spinner from '../Spinner';
 
 export default function Shop({
-    products: productsData,
+    products,
     handleAddToCart,
     loading,
     activeCurrency,
@@ -24,7 +24,7 @@ export default function Shop({
                 {loading ? (
                     <Spinner />
                 ) : (
-                    productsData?.products?.map((product) => (
+                    products?.map((product) => (
                         <ProductCard
                             key={product.id}
                             product={product}

@@ -72,7 +72,7 @@ export default function SideDrawer({
                                         </button>
                                     </div>
                                     <div className="item-amount">
-                                        {formatPrice(activeCurrency).format(ct.price)}
+                                        {formatPrice(activeCurrency).format(ct.quantity * ct.price)}
                                     </div>
                                 </div>
                             </div>
@@ -80,14 +80,17 @@ export default function SideDrawer({
                     })
                 )}
             </div>
-
-            <div className="check-out-section">
-                <div className="subtotal">
-                    <span>Subtotal</span>
-                    <span>{formatPrice(activeCurrency).format(getCartPriceTotal())}</span>
+            {loading ? (
+                ''
+            ) : (
+                <div className="check-out-section">
+                    <div className="subtotal">
+                        <span>Subtotal</span>
+                        <span>{formatPrice(activeCurrency).format(getCartPriceTotal())}</span>
+                    </div>
+                    <button className="checkout">Proceed to Checkout</button>
                 </div>
-                <button className="checkout">Proceed to Checkout</button>
-            </div>
+            )}
         </div>
     );
 }
