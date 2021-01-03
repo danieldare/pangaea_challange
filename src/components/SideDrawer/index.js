@@ -82,16 +82,25 @@ export default function SideDrawer({
                     })
                 )}
             </div>
-            {loading ? (
+
+            {cart.length < 1 ? (
                 ''
             ) : (
-                <div className="check-out-section">
-                    <div className="subtotal">
-                        <span>Subtotal</span>
-                        <span>{formatPrice(activeCurrency).format(getCartPriceTotal() || '')}</span>
-                    </div>
-                    <button className="checkout">Proceed to Checkout</button>
-                </div>
+                <>
+                    {loading ? (
+                        ''
+                    ) : (
+                        <div className="check-out-section">
+                            <div className="subtotal">
+                                <span>Subtotal</span>
+                                <span>
+                                    {formatPrice(activeCurrency).format(getCartPriceTotal() || '')}
+                                </span>
+                            </div>
+                            <button className="checkout">Proceed to Checkout</button>
+                        </div>
+                    )}
+                </>
             )}
         </div>
     );
