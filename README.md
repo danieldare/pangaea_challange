@@ -1,6 +1,6 @@
 # Pangaea Interview Challange
 
-Link to the web application - https://panagaeachallange.netlify.app/
+Link to the web application - https://pangaeachallange.netlify.app/
 
 ## Requirements and Installation
 
