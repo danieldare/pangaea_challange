@@ -1,9 +1,10 @@
-import { array, bool, func, string } from 'prop-types';
+import { array, bool, func, object, string } from 'prop-types';
 import React from 'react';
 import ProductCard from '../ProductCard';
 import Spinner from '../Spinner';
 
 export default function Shop({ products, handleAddToCart, loading, activeCurrency, error }) {
+    console.log(error);
     return (
         <div className="shop" id="shop">
             <div className={`products ${loading || error ? 'd-flex' : ''}`}>
@@ -37,5 +38,5 @@ Shop.propTypes = {
     handleAddToCart: func.isRequired,
     loading: bool.isRequired,
     activeCurrency: string.isRequired,
-    error: bool
+    error: object
 };
