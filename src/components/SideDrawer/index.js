@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import { array, bool, func, string } from 'prop-types';
 import React from 'react';
-import { formatPrice } from '../../../utils';
+import { formatPrice } from '../../utils';
 import Spinner from '../Spinner';
 
 export default function SideDrawer({

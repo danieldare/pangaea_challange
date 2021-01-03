@@ -1,6 +1,6 @@
 import { func, number, shape, string } from 'prop-types';
 import React from 'react';
-import { formatPrice } from '../../../utils';
+import { formatPrice } from '../../utils';
 
 export default function ProductCard({ product, handleAddToCart, activeCurrency }) {
     const { title, price, image_url } = product;

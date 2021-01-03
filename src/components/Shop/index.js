@@ -3,21 +3,13 @@ import React from 'react';
 import ProductCard from '../ProductCard';
 import Spinner from '../Spinner';
 
-export default function Shop({
-    products,
-    handleAddToCart,
-    loading,
-    activeCurrency,
-    error,
-    refetch
-}) {
+export default function Shop({ products, handleAddToCart, loading, activeCurrency, error }) {
     return (
         <div className="shop" id="shop">
             <div className={`products ${loading ? 'd-flex' : ''}`}>
                 {error && (
                     <div className={`${loading ? 'error' : ''}`}>
                         <div>An Unknown Error occured!. Kindly refresh the page</div>
-                        <button onClick={() => refetch()}>Click to refresh</button>
                     </div>
                 )}
 
@@ -39,10 +31,9 @@ export default function Shop({
 }
 
 Shop.propTypes = {
-    products: array.isRequired,
+    products: array,
     handleAddToCart: func.isRequired,
     loading: bool.isRequired,
     activeCurrency: string.isRequired,
-    error: bool,
-    refetch: func.isRequired
+    error: bool
 };

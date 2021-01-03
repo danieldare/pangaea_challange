@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
 import { useUpdateEffect } from 'react-use';
-import BackDrop from '../components/LandingPageContent/BackDrop';
-import MiniBanner from '../components/LandingPageContent/MiniBanner';
-import Navbar from '../components/LandingPageContent/Navbar';
-import Shop from '../components/LandingPageContent/Shop';
-import SideDrawer from '../components/LandingPageContent/SideDrawer';
+import BackDrop from '../components/BackDrop';
+import MiniBanner from '../components/MiniBanner';
+import Navbar from '../components/Navbar';
+import Shop from '../components/Shop';
+import SideDrawer from '../components/SideDrawer';
 import { GET_CURRENCIES_QUERY, GET_PRODUCTS_QUERY } from '../queries';
 
 export default function LandingPage() {
@@ -13,14 +13,10 @@ export default function LandingPage() {
     const [currenciesOptions, setCurrenciesOptions] = useState(['USD']);
     const [sideDrawerVisibility, setSideDrawerVisibility] = useState(false);
     const [cart, setCart] = useState([]);
-    // const [productsData, setProductsData] = useState([]);
 
-    const { data: products, loading: loadingProducts, error, refetch } = useQuery(
-        GET_PRODUCTS_QUERY,
-        {
-            variables: { currency: activeCurrency }
-        }
-    );
+    const { data: products, loading: loadingProducts, error } = useQuery(GET_PRODUCTS_QUERY, {
+        variables: { currency: activeCurrency }
+    });
 
     const { data: currencies } = useQuery(GET_CURRENCIES_QUERY);
 
@@ -107,7 +103,6 @@ export default function LandingPage() {
                 handleAddToCart={addToCart}
                 loading={loadingProducts}
                 error={error}
-                refetch={refetch}
             />
         </>
     );

@@ -1,6 +1,6 @@
 import { func } from 'prop-types';
 import React from 'react';
-import CartIcon from '../../../assets/images/cart.png';
+import CartIcon from '../../assets/images/cart.png';
 
 export default function Navbar({ toggleSideDrawer, getTotalItemsInCart }) {
     return (
